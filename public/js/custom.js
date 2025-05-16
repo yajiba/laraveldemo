@@ -123,3 +123,47 @@ $("#updateCustomerForm").submit(function (e) {
         }
     });
 });
+
+
+new DataTable('#accountTable', {
+    ajax: baseUrl()+'/accounts/list',
+    processing: true,
+    serverSide: true,
+    columnDefs: [
+        { targets: '_all', visible: true},
+    ],
+    columns: [
+        {
+            data: 'account_id',
+            name: 'account_id',
+            title: 'ID'
+        },
+        {
+            data: 'first_name',
+            name: 'first_name',
+            title: 'First Name'
+        },
+        {
+            data: 'last_name',
+            name: 'last_name',
+            title: 'Last Name'
+        },
+        {
+            data: 'branch_name',
+            name: 'branch_name',
+            title: 'Branch'
+        },
+        {
+            data: 'account_type',
+            name: 'account_type',
+            title: 'Account_type'
+        },
+        {
+            data: 'balance',
+            name: 'balance',
+            title: 'Balance'
+        },
+
+
+    ]
+});

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,8 +21,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/customers', [CustomerController::class, 'list'])->name('customers.list');
     Route::get('/customers/list', [CustomerController::class, 'customer_datatables'])->name('customers.datatables');
-
     Route::post('/customer/update', [CustomerController::class, 'update_customer'])->name('customers.update');
+
+    Route::get('/accounts', [AccountController::class, 'accounts'])->name('accounts');
+    Route::get('/accounts/list', [AccountController::class, 'account_datatables'])->name('accounts.datatables');
 
 
 });
