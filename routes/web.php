@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/accounts', [AccountController::class, 'accounts'])->name('accounts');
     Route::get('/accounts/list', [AccountController::class, 'account_datatables'])->name('accounts.datatables');
+    Route::post('/account/update', [AccountController::class, 'update_account']);
 
 
 });

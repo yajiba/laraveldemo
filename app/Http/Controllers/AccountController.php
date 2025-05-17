@@ -16,4 +16,24 @@ class AccountController extends Controller
                                 JOIN branches b ON a.branch_id = b.branch_id ');
         return DataTables::of($accounts)->make(true);
     }
+
+    public function update_account(Request $request) {
+        $updated = DB::update(
+            'UPDATE accounts SET account_type = ? WHERE account_id = ?',
+            [$request->input('account_type'), $request->input('id')]
+        );
+
+        if ($updated) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Account updated successfully',
+                'account_id' => $request->input('id')
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Account not found or no change made',
+            ], 404);
+        }
+    }
 }
